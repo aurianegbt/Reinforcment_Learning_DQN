@@ -22,6 +22,6 @@ class neural_kernel():
         # On fournit au modèle comment calculer l'erreur et quelle fonction pour l'optimiser
         self.model.compile(loss = 'mean_squared_error', optimizer = Adam(learning_rate = self.learning_rate))
 
-    def load_model(self, filepath):
+    def loadModel(self, filepath):
         self.model = load_model(filepath)
         return self.model

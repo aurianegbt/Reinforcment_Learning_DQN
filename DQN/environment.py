@@ -1,8 +1,7 @@
 import numpy as np
-import pygame as pg
 
-class Snake_environment: 
-    def __init__(self): 
+class Snake_environment:
+    def __init__(self):
         self.row = 8                    # Nombre de lignes
         self.col = 8                    # Nombre de colonnes
         self.snake_initial = 2
@@ -11,11 +10,11 @@ class Snake_environment:
         self.apple_reward = 200         # Gain
 
         self.snake_position = []
-        
+
         #Grille de jeu : 0 = rien, 0.5 = serpent, 1 = pomme
         self.map =  np.zeros((self.row, self.col))
 
-        for i in range(self.snake_initial):  #Taille initiale d'un snake : self.snake_initial 
+        for i in range(self.snake_initial):  #Taille initiale d'un snake : self.snake_initial
             row_init = int(self.row/2)+i
             col_init = int(self.col/2)
             self.snake_position+=[(row_init,col_init)]
@@ -61,7 +60,7 @@ class Snake_environment:
 
     def step(self,action):
         '''
-        Notre convention : 
+        Notre convention :
         ACTION_UP = 0
         ACTION_DOWN = 1
         ACTION_RIGHT = 2
@@ -92,7 +91,7 @@ class Snake_environment:
         if action == 0 :
             next_row = pos_row-1
             next_col = pos_col
-            
+
             #Le serpent perd s'il rencontre un mur ou lui-même:
             #Grille de jeu : 0 = rien, 0.5 = serpent, 1 = pomme
             if next_row < 0 :
@@ -187,5 +186,5 @@ class Snake_environment:
         apple_pos_row = self.apple_position[0]
         apple_pos_col = self.apple_position[1]
         self.map[apple_pos_row,apple_pos_col]= 1
-    
+
         self.last_move = 0
